@@ -1,0 +1,19 @@
+name: run game Y 1
+run-name: ${{ github.actor }} - build
+
+on: 
+  workflow_dispatch:
+
+jobs:
+    build: 
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+        - run: | 
+            gh api \
+              -H "Accept: application/vnd.github+json" \
+              -H "X-GitHub-Api-Version: 2022-11-28" \
+              /gists
+            echo success
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
