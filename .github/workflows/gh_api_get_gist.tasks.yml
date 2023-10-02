@@ -1,5 +1,5 @@
 # task/action name/descrption
-name: build
+name: ▶️ get all gist 
 run-name: ${{ github.actor }} - example gh api get gist
 on: workflow_dispatch
 jobs:

@@ -1,5 +1,5 @@
 # task/action name/descrption
-name: push_to_main
+name: 📦 push to main
 run-name: ${{ github.actor }} - execute add ., commit and push to main branch
 
 on:
