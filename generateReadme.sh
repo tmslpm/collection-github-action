@@ -13,11 +13,15 @@ RESULT=$(ls $ENTRY_PATH)
 # append all action title + link in variable 
 strTableList=""
 strList=""
-for f in $RESULT; do 
-    title="${$(cat "${ENTRY_PATH}/${f}" | grep "^# name:")/\# name:/''}" 
-    description="${$(cat "${ENTRY_PATH}/${f}" | grep "# description:")/\# description:/''}"
-
-    strTableList="${strTableList}<li><a href='/' title='go to '>${title}</a></li>"
+for f in $RESULT; do
+    # title
+    title=$(cat "${ENTRY_PATH}/${f}" | grep "^# name:")
+    title="${title/\# name:/''}"
+    # description
+    description=$(cat "${ENTRY_PATH}/${f}" | grep "# description:")
+    description="${description/\# description:/''}"
+    # build
+    strTableList="${strTableList}<li><a href='' title='go to '>${title}</a></li>"
     strList="${strList}<hr><h4>${title}</h4><p>${description}</p><p>↳ 🔗 <a href='${URL}${f}' title='open the action'>${f}</a> (<a href='${RAW_URL}${f}' title='open the action'>raw</a>)</p>${BACK_TO_TOP}"
 done
 
