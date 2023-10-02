@@ -1,0 +1,11 @@
+{
+  "name": "collection_action_github",
+  "version": "1.0.0",
+  "description": "collection github action",
+  "main": "index.js",
+  "scripts": {
+    "pushForce": "git add . && git commit -m '...' && git push --force"
+  },
+  "author": "tmslpm",
+  "license": "MIT"
+}
