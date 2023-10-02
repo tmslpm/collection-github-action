@@ -1,5 +1,5 @@
-name: ▶️ get all gist 
-run-name: ${{ github.actor }} - example gh api get gist
+name: ▶️ get all repos 
+run-name: ${{ github.actor }} - example gh api get repos
 on: workflow_dispatch
 jobs:
   # - - - - - - - - - - - - - - - - - - - - - -
