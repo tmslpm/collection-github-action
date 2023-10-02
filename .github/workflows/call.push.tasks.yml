@@ -2,7 +2,8 @@
 name: push_to_main
 run-name: ${{ github.actor }} - execute add ., commit and push to main branch
 
-on: workflow_call: 
+on:
+  workflow_call:
 
 jobs:
   build:
