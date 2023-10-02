@@ -9,8 +9,7 @@ jobs:
       - name: Make Github commit
         run: |
           #--------------------------------------------------------------
-          # config
-          STR_EMPTY=""
+          # config 
           ENTRY_PATH="./.github/workflows"
           RAW_URL="https://raw.githubusercontent.com/tmslpm/Collection-Github-Action/main/.github/workflows/"
           URL="https://github.com/tmslpm/Collection-Github-Action/blob/main/.github/workflows/" 
@@ -24,7 +23,7 @@ jobs:
           strList=""
           for f in $RESULT; do
             title=$(cat "${ENTRY_PATH}/${f}" | grep "^name:")
-            strList="${strList}<br><h4>${title/name:/STR_EMPTY}</h4><p>🔗 <a href='${URL}${f}' title='open the action'>${f}</a> (<a href='${RAW_URL}${f}' title='open the action'>raw</a>)</p>"
+            strList="${strList}<br><h4>${title/name:/''}</h4><p>🔗 <a href='${URL}${f}' title='open the action'>${f}</a> (<a href='${RAW_URL}${f}' title='open the action'>raw</a>)</p>"
           done
 
           #--------------------------------------------------------------
