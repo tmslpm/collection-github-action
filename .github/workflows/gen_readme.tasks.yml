@@ -22,9 +22,10 @@ jobs:
           # append all action title + link in readme 
           outListMarkdown=""
           for f in $RESULT; do
+            title=$($f | tr "_" " ")
             outListMarkdown="
               ${outListMarkdown}<br>
-              <h4>${$(f | tr _ " ")}</h4>
+              <h4>${title}</h4>
               File -> <a href='${URL}${f}' title='open the action'>${f}</a> (<a href='${RAW_URL}${f}' title='open the action'>raw</a>)
             "
           done

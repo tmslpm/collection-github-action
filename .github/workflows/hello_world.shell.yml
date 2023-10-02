@@ -1,0 +1,10 @@
+name: 😻 hello world - shell
+run-name: ${{ github.actor }} - print Hello World !
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "use ubuntu shell for execute script file or inline code"
+        run: |
+          echo hello world
