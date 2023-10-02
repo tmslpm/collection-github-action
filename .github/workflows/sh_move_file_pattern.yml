@@ -1,5 +1,5 @@
 name: ▶️ move file to other directory
-run-name: ${{ github.actor }} - execute add ., commit and push to main branch
+run-name: ${{ github.actor }} - move file to other directory
 on: workflow_dispatch
 jobs:
   build:
