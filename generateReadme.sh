@@ -31,7 +31,7 @@ for f in $RESULT; do
         - <a href='${URL}${f}' title='open the source code of the action'>SOURCE</a>\
         - <a href='${RAW_URL}${f}' title='open the raw code of the action'>RAW</a>\
         - <a href='${ACTION_URL}${f}' title='open the the action'>ACTION</a>\
-        - 🔗</p><p>\
+        - 🔗</p><p style="text-align:center" align="center">\
         <img src='${ACTION_URL}${f}/badge.svg' alt='badge action/${f}@main'/>\
         </p>${BACK_TO_TOP}"
 done
