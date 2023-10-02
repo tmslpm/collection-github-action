@@ -1,4 +1,4 @@
-name: ▶️ gen readme
+name: 🏗️ gen readme
 run-name: ${{ github.actor }} - generate readme
 on: workflow_dispatch
 jobs:
