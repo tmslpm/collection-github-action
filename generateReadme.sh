@@ -20,7 +20,7 @@ for f in $RESULT; do
     # gen html title/description/link to action
     strList="${strList}<hr><h4>${title/\# name:/''}</h4><p>${description/\# description:/''}</p><p>↳ 🔗 <a href='${URL}${f}' title='open the action'>${f}</a> (<a href='${RAW_URL}${f}' title='open the action'>raw</a>)</p>${BACK_TO_TOP}"
     # gen html header table
-    strTableList="${strTableList}<li><a>${title/' '/'-'}</a></li>"
+    strTableList="${strTableList}<li><a>${title/\# name:/''}</a></li>"
 done
 strTableList="${strTableList}</ul>"
 
