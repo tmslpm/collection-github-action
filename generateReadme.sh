@@ -11,7 +11,7 @@ RESULT=$(ls $ENTRY_PATH)
   
 #--------------------------------------------------------------
 # append all action title + link in variable 
-strTableList=""
+strTableList="Table:"
 strList=""
 for f in $RESULT; do
     # title
