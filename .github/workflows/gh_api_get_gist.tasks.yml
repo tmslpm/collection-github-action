@@ -1,6 +1,6 @@
+# description: soon
 name: ▶️ Get all gist 
 run-name: ${{ github.actor }} - example gh api get gist
-description: soon
 on: workflow_dispatch
 jobs:
   # - - - - - - - - - - - - - - - - - - - - - -

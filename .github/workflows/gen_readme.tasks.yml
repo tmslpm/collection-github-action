@@ -1,6 +1,6 @@
+# description: This action uses a shell script to generate the rest readme, it retrieves all the actions in the directory `.github/workflows`, it retrieves and builds the different information collected.
 name: 🏗️ Gen readme
 run-name: ${{ github.actor }} - generate readme
-description: This action uses a shell script to generate the rest readme, it retrieves all the actions in the directory `.github/workflows`, it retrieves and builds the different information collected.
 on: [push] #on: workflow_dispatch
 jobs:
   build:

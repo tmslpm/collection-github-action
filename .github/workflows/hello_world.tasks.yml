@@ -1,6 +1,6 @@
+# description: soon
 name: 😻 Hello World - shell
 run-name: ${{ github.actor }} - print Hello World !
-description: soon
 on: workflow_dispatch
 jobs:
   build:

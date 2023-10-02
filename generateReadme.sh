@@ -12,8 +12,10 @@ RESULT=$(ls $ENTRY_PATH)
 # append all action title + link in variable 
 strList=""
 for f in $RESULT; do
-    title=$(cat "${ENTRY_PATH}/${f}" | grep "^name:")
-    strList="${strList}<h4>${title/name:/''}</h4><p>🔗 <a href='${URL}${f}' title='open the action'>${f}</a> (<a href='${RAW_URL}${f}' title='open the action'>raw</a>)</p>"
+    content=$(cat "${ENTRY_PATH}/${f}")
+    title=$($content | grep "^name:")
+    description=$($content | grep "# description:")
+    strList="${strList}<h4>${title/name:/''}</h4><p>${description/# description:/''}</p><p>🔗 <a href='${URL}${f}' title='open the action'>${f}</a> (<a href='${RAW_URL}${f}' title='open the action'>raw</a>)</p>"
 done
 
 #--------------------------------------------------------------
