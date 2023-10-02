@@ -9,14 +9,20 @@ jobs:
       - name: Make Github commit
         run: |
           #--------------------------------------------------------------
-          # get all workflows in repos
-          result=$(ls ./.github/workflows)
- 
+          # config
+          ENTRY_PATH="./.github/workflows"
+          RAW_URL="https://raw.githubusercontent.com/tmslpm/Collection-Github-Action/main/.github/workflows/"
+          URL="https://github.com/tmslpm/Collection-Github-Action/blob/main/.github/workflows/" 
+           
           #--------------------------------------------------------------
-          # append all action title + link in readme https://raw.githubusercontent.com/tmslpm/My-Collection-Github-Action/main/.github/workflows/gen_readme.tasks.yml
+          # get all workflows in repos
+          RESULT=$(ls $ENTRY_PATH)
+           
+          #--------------------------------------------------------------
+          # append all action title + link in readme 
           outListMarkdown=""
-          for f in $result; do
-            outListMarkdown="${outListMarkdown}<br> - File -> $f"
+          for f in $RESULT; do
+            outListMarkdown="${outListMarkdown}<br> - File -> <a href='${URL}${f}' title='open the action'>${f}</a> (<a href='${RAW_URL}${f}' title='open the action'>raw</a>)"
           done
 
           #--------------------------------------------------------------
@@ -25,6 +31,11 @@ jobs:
           <h1>🚀 Collection Github Action</h1>
           
           ${outListMarkdown}
+
+          <hr>
+          <pre align=center>
+            ↑↑↑ <a href="#-collection-github-action" title="click to scroll up" alt="click to scroll up">BACK TO TOP</a> ↑↑↑
+          </pre>
           EOL
           #--------------------------------------------------------------
           # commit and push with ad-m/github-push-action
