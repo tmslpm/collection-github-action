@@ -9,7 +9,29 @@ BACK_TO_TOP="<pre align=center>↑↑↑ <a href='#-collection-github-action' ti
 #--------------------------------------------------------------
 # get all workflows in repos
 RESULT=$(ls $ENTRY_PATH)
-  
+
+#--------------------------------------------------------------
+# first iteration for get category
+indexCategory=0
+strTdCategory=""
+for f in $RESULT; do
+    currentCategory=$(cat "${ENTRY_PATH}/${f}" | grep "^# category:")
+    currentCategory="${currentCategory/\# category: /''}"
+   
+    hasNotFoundCategory=true
+    for currentKey in "${!category[@]}"; do
+        if [[ "${category[$currentKey]}" == $currentCategory ]]; then
+            hasNotFoundCategory=false
+        fi
+    done
+
+    if $hasNotFoundCategory; then
+        category[$indexCategory]=$currentCategory
+        strTdCategory="${strTdCategory}<td>${currentCategory}</td>"
+        ((indexCategory=indexCategory+1))
+    fi
+done
+ 
 #--------------------------------------------------------------
 # append all action title + link in variable 
 strTableList=""
@@ -41,8 +63,11 @@ done
 echo "\
 <h1>🚀 Collection Github Action</h1>\
 <h2>Table</h2>\
+<table>\
+<tr>${strTdCategory}</tr>\
+</table>\
 <ul>${strTableList}</ul>\
 <hr>\
 ${strList}\
-<p style="text-align:center" align="center">readme generated on $(date "\`+%H:%M:%S\` at \`%d/%m/%y\`")</p>\
+<p style="text-align:center" align="center">readme generated on $(date "+%H:%M:%S at %d/%m/%y")</p>\
 " > README.md

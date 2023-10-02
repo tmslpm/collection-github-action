@@ -1,4 +1,5 @@
 # name: Hello World - shell
+# category: hello-world
 # description: This action is just for demonstration purposes (or a template), it shows how to execute a shell script in Github action.
 name: 😻 Hello World - shell
 run-name: ${{ github.actor }} - print Hello World !

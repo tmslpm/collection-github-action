@@ -1,4 +1,5 @@
 # name: Gen readme
+# category: generation
 # description: This action uses a shell script to generate the README.md, it get all the actions in the directory `.github/workflows` and builds the different information collected.
 name: 🏗️ Gen readme
 run-name: ${{ github.actor }} - generate readme

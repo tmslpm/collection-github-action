@@ -1,4 +1,5 @@
 # name: Commit and push to main
+# category: example
 # description: This action executes a `git add .`, a `git commit` (whith empty comment) and a `git  push` on this repos, it uses an external action `ad-m/github-push-action` for the `git push` (The default secrets.GITHUB_TOKEN is used).  
 name: ▶️ Commit and push to main
 run-name: ${{ github.actor }} - execute add ., commit and push to main branch
