@@ -10,8 +10,9 @@ jobs:
         run: |
           # get all workflows in repos
           result=$(ls ./.github/workflows)
-          echo $resul
-
+          for f in $result; do
+            echo "File -> $f"
+          done
           git config --local user.email "gh-actions@users.noreply.github.com" && git config --local user.name "gh-actions-bot"
           git add . && git commit -m "commit by gh actions"
       - name: Make Github push
