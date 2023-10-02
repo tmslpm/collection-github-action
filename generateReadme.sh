@@ -10,12 +10,11 @@ RESULT=$(ls $ENTRY_PATH)
 
 #--------------------------------------------------------------
 # append all action title + link in variable 
-strList="<table><tr><td>name</td><td>source</td><td>raw</td></tr>"
+strList=""
 for f in $RESULT; do
     title=$(cat "${ENTRY_PATH}/${f}" | grep "^name:")
-    strList="${strList}<tr><h4><td>${title/name:/''}</td><td><a href='${URL}${f}' title='open the action'>${f}</a></td><td><a href='${RAW_URL}${f}' title='open the action'>raw</a></td></tr>"
+    strList="${strList}<h4>${title/name:/''}</h4><p>🔗 <a href='${URL}${f}' title='open the action'>${f}</a> (<a href='${RAW_URL}${f}' title='open the action'>raw</a>)</p>"
 done
-strList="${strList}</table"
 
 #--------------------------------------------------------------
 # write in readme
