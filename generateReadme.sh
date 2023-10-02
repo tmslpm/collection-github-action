@@ -22,7 +22,7 @@ for f in $RESULT; do
     description="${description/\# description:/''}"
     # build
     strTableList="${strTableList}<li><a href='#${title// /-}' title='go to ${title}'>${title}</a></li>"
-    strList="${strList}<hr><h4>${title}</h4><p>${description}</p><p>↳ 🔗 <a href='${URL}${f}' title='open the action'>${f}</a> (<a href='${RAW_URL}${f}' title='open the action'>raw</a>)</p>${BACK_TO_TOP}"
+    strList="${strList}<hr><h4>🟢 ${title}</h4><p>${description}</p><p>↳ 🔗 <a href='${URL}${f}' title='open the action'>${f}</a> (<a href='${RAW_URL}${f}' title='open the action'>raw</a>)</p>${BACK_TO_TOP}"
 done
 
 #--------------------------------------------------------------
