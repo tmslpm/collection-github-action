@@ -11,16 +11,21 @@ jobs:
           #--------------------------------------------------------------
           # get all workflows in repos
           result=$(ls ./.github/workflows)
+ 
           #--------------------------------------------------------------
-          # reset readme
-          cat > README.md << EOL
-          🚀 Collection Github Action
-          EOL
-          #--------------------------------------------------------------
-          # append all action title + link in readme
+          # append all action title + link in readme https://raw.githubusercontent.com/tmslpm/My-Collection-Github-Action/main/.github/workflows/gen_readme.tasks.yml
+          outListMarkdown=""
           for f in $result; do
-            echo "- File -> $f" | tee -a README.md
+            outListMarkdown="${outListMarkdown}\n- File -> $f"
           done
+
+          #--------------------------------------------------------------
+          # write in readme
+          cat > README.md << EOL
+          \# 🚀 Collection Github Action
+
+          ${outListMarkdown}
+          EOL
           #--------------------------------------------------------------
           # commit and push with ad-m/github-push-action
           git config --local user.email "gh-actions@users.noreply.github.com" && git config --local user.name "gh-actions-bot"
