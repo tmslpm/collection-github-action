@@ -1,5 +1,5 @@
 # name: Hello World - nodeJs
-# description: soon
+# description: This action is just for demonstration purposes (or a template), it shows how to execute a nodeJS script in Github action.
 name: 😻 Hello World - nodeJs
 run-name: ${{ github.actor }} - print Hello World !
 on: workflow_dispatch

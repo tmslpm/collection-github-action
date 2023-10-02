@@ -1,5 +1,5 @@
-# name: Get all gist
-# description: soon
+# name: Get all gists for a user
+# description: This action uses the github api to get all gists for a user. The API request use CURL and requires a token to access the GITHUB api. 
 name: ▶️ Get all gist
 run-name: ${{ github.actor }} - example gh api get gist
 on: workflow_dispatch
