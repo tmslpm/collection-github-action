@@ -20,23 +20,17 @@ jobs:
            
           #--------------------------------------------------------------
           # append all action title + link in readme 
-          outListMarkdown=""
+          strList=""
           for f in $RESULT; do
             title=$($f | tr "_" " ")
-            outListMarkdown="
-              ${outListMarkdown}<br>
-              <h4>${title}</h4>
-              File -> <a href='${URL}${f}' title='open the action'>${f}</a> (<a href='${RAW_URL}${f}' title='open the action'>raw</a>)
-            "
+            strList="${strList}<br><h4>${title}</h4><p>File -> <a href='${URL}${f}' title='open the action'>${f}</a> (<a href='${RAW_URL}${f}' title='open the action'>raw</a>)</p>"
           done
 
           #--------------------------------------------------------------
           # write in readme
           cat > README.md << EOL
           <h1>🚀 Collection Github Action</h1>
-          
-          ${outListMarkdown}
-
+          ${strList}
           <hr>
           <pre align=center>
             ↑↑↑ <a href="#-collection-github-action" title="click to scroll up" alt="click to scroll up">BACK TO TOP</a> ↑↑↑
