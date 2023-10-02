@@ -11,19 +11,20 @@ RESULT=$(ls $ENTRY_PATH)
   
 #--------------------------------------------------------------
 # append all action title + link in variable 
+strTableList=""
 strList=""
-strTableList="[TABLE]:<br>"
-for f in $RESULT; do
-    title=$(cat "${ENTRY_PATH}/${f}" | grep "^# name:")
-    description=$(cat "${ENTRY_PATH}/${f}" | grep "# description:")
-    strTableList="${strTableList}   ├─ ${title/\# name:/''}<br>"
-    strList="${strList}<hr><h4>${title/\# name:/''}</h4><p>${description/\# description:/''}</p><p>↳ 🔗 <a href='${URL}${f}' title='open the action'>${f}</a> (<a href='${RAW_URL}${f}' title='open the action'>raw</a>)</p>${BACK_TO_TOP}"
+for f in $RESULT; do 
+    title="${$(cat "${ENTRY_PATH}/${f}" | grep "^# name:")/\# name:/''}" 
+    description="${$(cat "${ENTRY_PATH}/${f}" | grep "# description:")/\# description:/''}"
+
+    strTableList="${strTableList}<li><a href='/' title='go to '>${title}</a></li>"
+    strList="${strList}<hr><h4>${title}</h4><p>${description}</p><p>↳ 🔗 <a href='${URL}${f}' title='open the action'>${f}</a> (<a href='${RAW_URL}${f}' title='open the action'>raw</a>)</p>${BACK_TO_TOP}"
 done
 
 #--------------------------------------------------------------
 # write in readme
 cat > README.md << EOL
 <h1>🚀 Collection Github Action</h1>
-${strTableList}
+<ul>${strTableList}</ul>
 ${strList}
 EOL
