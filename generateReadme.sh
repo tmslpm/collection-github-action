@@ -9,12 +9,13 @@ URL="https://github.com/tmslpm/Collection-Github-Action/blob/main/.github/workfl
 RESULT=$(ls $ENTRY_PATH)
 
 #--------------------------------------------------------------
-# append all action title + link in readme 
-strList=""
+# append all action title + link in variable 
+strList="<table><tr><td>name</td><td>source</td><td>raw</td></tr>"
 for f in $RESULT; do
     title=$(cat "${ENTRY_PATH}/${f}" | grep "^name:")
-    strList="${strList}<br><h4>${title/name:/''}</h4><p>🔗 <a href='${URL}${f}' title='open the action'>${f}</a> (<a href='${RAW_URL}${f}' title='open the action'>raw</a>)</p>"
+    strList="${strList}<tr><h4><td>${title/name:/''}</td><td><a href='${URL}${f}' title='open the action'>${f}</a></td><td><a href='${RAW_URL}${f}' title='open the action'>raw</a></td></tr>"
 done
+strList="${strList}</table"
 
 #--------------------------------------------------------------
 # write in readme
