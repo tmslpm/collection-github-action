@@ -67,7 +67,7 @@ done
 # header - footer
 strHeader="<h1>🚀 Collection Github Action</h1>"
 strFooter="<hr><p style="text-align:center" align="center">readme generated on $(date "+%H:%M:%S at %d/%m/%y")</p>"
-strTable="<h2>Table</h2><table><tr>${strTdCategory}</tr><td>"
+strTable="<h2>Table</h2><table><tr>${strTdCategory}</tr><tr>"
 
 for currentKey in "${!category[@]}"; do
     currentCategory="${category[$currentKey]}"
