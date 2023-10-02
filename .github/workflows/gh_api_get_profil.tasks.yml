@@ -16,8 +16,6 @@ jobs:
             https://api.github.com/users/tmslpm) 
           echo $RESPONSE_API
           echo $RESPONSE_API > get_profil.last.json
-      - name: Make Github commit
-        run: |
           git config --local user.email "gh-actions@users.noreply.github.com" && git config --local user.name "gh-actions-bot"
           git add . && git commit -m "commit by gh actions"
       - name: Make Github push
