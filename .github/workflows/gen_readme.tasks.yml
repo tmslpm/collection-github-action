@@ -21,9 +21,8 @@ jobs:
           #--------------------------------------------------------------
           # append all action title + link in readme 
           strList=""
-          for f in $RESULT; do
-            title=$("$f" | tr '_' ' ')
-            strList="${strList}<br><h4>${title}</h4><p>File -> <a href='${URL}${f}' title='open the action'>${f}</a> (<a href='${RAW_URL}${f}' title='open the action'>raw</a>)</p>"
+          for f in $RESULT; do 
+            strList="${strList}<br><h4>$('$f' | tr '_' ' ')</h4><p>File -> <a href='${URL}${f}' title='open the action'>${f}</a> (<a href='${RAW_URL}${f}' title='open the action'>raw</a>)</p>"
           done
 
           #--------------------------------------------------------------
