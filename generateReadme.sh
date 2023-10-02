@@ -70,9 +70,7 @@ strFooter="<hr><p style="text-align:center" align="center">readme generated on $
 strTable="<h2>Table</h2><table><tr>${strTdCategory}</tr>"
 for currentKey in "${!category[@]}"; do
     currentCategory="${category[$currentKey]}"
-    strTable="${strTable}
-    <tr>${arrTableList[$currentCategory]}</tr>\
-    \"
+    strTable="${strTable}<tr>${arrTableList[$currentCategory]}</tr>"
 done
 strTable="${strTable}</table>"
 
