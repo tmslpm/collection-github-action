@@ -26,9 +26,12 @@ for f in $RESULT; do
     strList="${strList}\
         <h2>🟢 ${title}</h2>\
         <p>${description}</p>\
-        <p>↳ 🔗 <a href='${URL}${f}' title='open the source code of the action'>source code</a>\
-        - <a href='${RAW_URL}${f}' title='open the raw code of the action'>raw</a>\
-        - <a href='${ACTION_URL}${f}' title='open the the action'>action</a>\
+        <p style="text-align:center" align="center">\
+        🔗 \
+        - <a href='${URL}${f}' title='open the source code of the action'>SOURCE</a>\
+        - <a href='${RAW_URL}${f}' title='open the raw code of the action'>RAW</a>\
+        - <a href='${ACTION_URL}${f}' title='open the the action'>ACTION</a>\
+        - 🔗</p><p>\
         <img src='${ACTION_URL}${f}/badge.svg' alt='badge action/${f}@main'/>\
         </p>${BACK_TO_TOP}"
 done
