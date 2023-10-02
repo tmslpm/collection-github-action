@@ -20,4 +20,7 @@ done
 
 #--------------------------------------------------------------
 # write in readme
-echo "<h1>🚀 Collection Github Action</h1>${strList}" > README.md
+cat > README.md << EOL
+<h1>🚀 Collection Github Action</h1>
+${strList}
+EOL
