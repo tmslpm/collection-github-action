@@ -12,4 +12,4 @@ jobs:
           node-version: "18.7.0"
       - name: "use node for execute script file or inline code"
         run: |
-          node -e console.log('hello world')
+          node -e "console.log('hello world')"

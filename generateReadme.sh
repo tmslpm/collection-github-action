@@ -12,7 +12,7 @@ RESULT=$(ls $ENTRY_PATH)
   
 #--------------------------------------------------------------
 # append all action title + link in variable 
-strTableList="<h2>Table</h2>"
+strTableList=""
 strList=""
 for f in $RESULT; do
     # title
@@ -26,23 +26,20 @@ for f in $RESULT; do
     strList="${strList}\
         <h2>🟢 ${title}</h2>\
         <p>${description}</p>\
-        <p>↳ 🔗 <a href='${URL}${f}' title='open the source code of the action'>${f}</a>\
-        (<a href='${RAW_URL}${f}' title='open the raw code of the action'>raw</a>)\
-        (<a href='${ACTION_URL}${f}' title='open the the action'>action</a>)\
+        <p>↳ 🔗 <a href='${URL}${f}' title='open the source code of the action'>source code</a>\
+        - <a href='${RAW_URL}${f}' title='open the raw code of the action'>raw</a>\
+        - <a href='${ACTION_URL}${f}' title='open the the action'>action</a>\
         <img src='${ACTION_URL}${f}/badge.svg' alt='badge action/${f}@main'/>\
         </p>${BACK_TO_TOP}"
 done
 
 #--------------------------------------------------------------
-# get current date and hours
-strDate=date "+%H:%M:%S   %d/%m/%y"
-
-#--------------------------------------------------------------
 # write in readme
-cat > README.md << EOL
-<h1>🚀 Collection Github Action</h1>
-<ul>${strTableList}</ul>
-<hr>
-${strList}
-<p style="text-align:center" align="center">readme generated on $(date "\`+%H:%M:%S\` at \`%d/%m/%y\`")</p>
-EOL
+echo "\
+<h1>🚀 Collection Github Action</h1>\
+<h2>Table</h2>\
+<ul>${strTableList}</ul>\
+<hr>\
+${strList}\
+<p style="text-align:center" align="center">readme generated on $(date "\`+%H:%M:%S\` at \`%d/%m/%y\`")</p>\
+" > README.md
