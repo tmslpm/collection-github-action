@@ -5,15 +5,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Run script file
-      run: |
-         chmod +x ./generateReadme.sh
-         ./generateReadme.sh
-      shell: bash
-
+      - uses: actions/checkout@v3  
       - name: Make Github commit
-        run: | 
+        run: |
+          chmod +x ./generateReadme.sh
+          ./generateReadme.sh
           #--------------------------------------------------------------
           # commit and push with ad-m/github-push-action
           git config --local user.email "gh-actions@users.noreply.github.com" && git config --local user.name "gh-actions-bot"
