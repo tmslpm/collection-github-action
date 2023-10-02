@@ -1,6 +1,7 @@
 #--------------------------------------------------------------
 # config 
 ENTRY_PATH="./.github/workflows"
+ACTION_URL="https://github.com/tmslpm/Collection-Github-Action/actions/workflows/"
 RAW_URL="https://raw.githubusercontent.com/tmslpm/Collection-Github-Action/main/.github/workflows/"
 URL="https://github.com/tmslpm/Collection-Github-Action/blob/main/.github/workflows/" 
 BACK_TO_TOP="<pre align=center>↑↑↑ <a href='#-collection-github-action' title='click to scroll up' alt='click to scroll up'>BACK TO TOP</a> ↑↑↑</pre>"
@@ -22,13 +23,19 @@ for f in $RESULT; do
     description="${description/\# description:/''}"
     # build
     strTableList="${strTableList}<li><a href='#-${title// /-}' title='go to ${title}'>${title}</a></li>"
-    strList="${strList}<h2>🟢 ${title}</h2><p>${description}</p><p>↳ 🔗 <a href='${URL}${f}' title='open the action'>${f}</a> (<a href='${RAW_URL}${f}' title='open the action'>raw</a>)</p>${BACK_TO_TOP}"
+    strList="${strList}<h2>🟢 ${title}</h2><p>${description}</p><p>↳ 🔗 <a href='${URL}${f}' title='open the action'>${f}</a> (<a href='${RAW_URL}${f}' title='open the action'>raw</a>)</p>${BACK_TO_TOP} <img src='${ACTION_URL}${f}/badge.svg'/>"
 done
+
+#--------------------------------------------------------------
+# get current date and hours
+strDate=date "+%H:%M:%S   %d/%m/%y"
 
 #--------------------------------------------------------------
 # write in readme
 cat > README.md << EOL
 <h1>🚀 Collection Github Action</h1>
 <ul>${strTableList}</ul>
+<hr>
 ${strList}
+<p style="text-align:center" align="center">readme generated on $(date "\`+%H:%M:%S\` at \`%d/%m/%y\`")</p>
 EOL
