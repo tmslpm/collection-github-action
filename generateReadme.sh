@@ -8,20 +8,15 @@ BACK_TO_TOP="<pre align=center>↑↑↑ <a href='#-collection-github-action' ti
 #--------------------------------------------------------------
 # get all workflows in repos
 RESULT=$(ls $ENTRY_PATH)
-
- 
-strTableList=""
-for f in $RESULT; do
-    title=$(cat "${ENTRY_PATH}/${f}" | grep "^# name:") 
-    strTableList="${strTableList}<li>${title/\# name:/''}</li>"
-done
-
+  
 #--------------------------------------------------------------
 # append all action title + link in variable 
 strList=""
+strTableList="[TABLE]:"
 for f in $RESULT; do
     title=$(cat "${ENTRY_PATH}/${f}" | grep "^# name:")
     description=$(cat "${ENTRY_PATH}/${f}" | grep "# description:")
+    strTableList="${strTableList}├── ${title/\# name:/''}<br>"
     strList="${strList}<hr><h4>${title/\# name:/''}</h4><p>${description/\# description:/''}</p><p>↳ 🔗 <a href='${URL}${f}' title='open the action'>${f}</a> (<a href='${RAW_URL}${f}' title='open the action'>raw</a>)</p>${BACK_TO_TOP}"
 done
 
@@ -29,6 +24,6 @@ done
 # write in readme
 cat > README.md << EOL
 <h1>🚀 Collection Github Action</h1>
-<ul>${strTableList}</ul>
+${strTableList}
 ${strList}
 EOL
