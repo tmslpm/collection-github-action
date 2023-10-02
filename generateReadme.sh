@@ -10,6 +10,12 @@ BACK_TO_TOP="<pre align=center>↑↑↑ <a href='#-collection-github-action' ti
 RESULT=$(ls $ENTRY_PATH)
 
  
+strTableList=""
+for f in $RESULT; do
+    title=$(cat "${ENTRY_PATH}/${f}" | grep "^# name:") 
+    strTableList="${strTableList}<li>${title/\# name:/''}</li>"
+done
+
 #--------------------------------------------------------------
 # append all action title + link in variable 
 strList=""
@@ -23,5 +29,6 @@ done
 # write in readme
 cat > README.md << EOL
 <h1>🚀 Collection Github Action</h1>
+<ul>${strTableList}</ul>
 ${strList}
 EOL
