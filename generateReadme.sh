@@ -25,8 +25,7 @@ for f in $RESULT; do
         fi
     done
 
-    if $hasNotFoundCategory; then
-        category[$indexCategory]=$currentCategory
+    if $hasNotFoundCategory; then 
         strTdCategory="${strTdCategory}<td>${currentCategory}</td>"
         ((indexCategory=indexCategory+1))
     fi
@@ -48,8 +47,14 @@ for f in $RESULT; do
     currentCategory="${currentCategory/\# category: /''}"
 
     # build
-    arrTableList[$currentCategory]="${arrTableList[$currentCategory]}<li><a href='#-${title// /-}' title='go to ${title}'>${title}</a></li>"
-    
+
+    for currentKey in "${!category[@]}"; do
+        if [[ "${category[$currentKey]}" == $currentCategory ]]; then
+            arrTableList[$currentCategory]="${arrTableList[$currentCategory]}<li><a href='#-${title// /-}' title='go to ${title}'>${title}</a></li>"
+        fi
+    done
+
+  
     strList="${strList}\
         <h2>🟢 ${title}</h2>\
         <p>${description}</p>\
