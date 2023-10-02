@@ -34,7 +34,7 @@ done
  
 #--------------------------------------------------------------
 # append all action title + link in variable 
-strTableList=""
+arrTableList=""
 strList=""
 for f in $RESULT; do
     # title
@@ -43,8 +43,13 @@ for f in $RESULT; do
     # description
     description=$(cat "${ENTRY_PATH}/${f}" | grep "# description:")
     description="${description/\# description:/''}"
+    # category
+    currentCategory=$(cat "${ENTRY_PATH}/${f}" | grep "^# category:")
+    currentCategory="${currentCategory/\# category: /''}"
+
     # build
-    strTableList="${strTableList}<li><a href='#-${title// /-}' title='go to ${title}'>${title}</a></li>" 
+    arrTableList[$currentCategory]="${arrTableList[$currentCategory]}<li><a href='#-${title// /-}' title='go to ${title}'>${title}</a></li>"
+    
     strList="${strList}\
         <h2>🟢 ${title}</h2>\
         <p>${description}</p>\
@@ -59,15 +64,18 @@ for f in $RESULT; do
 done
 
 #--------------------------------------------------------------
+# header - footer
+strHeader="<h1>🚀 Collection Github Action</h1>"
+strFooter="<hr><p style="text-align:center" align="center">readme generated on $(date "+%H:%M:%S at %d/%m/%y")</p>"
+strTable="<h2>Table</h2><table><tr>${strTdCategory}</tr>"
+for currentKey in "${!category[@]}"; do
+    currentCategory="${category[$currentKey]}"
+    strTable="${strTable}
+    <tr>${arrTableList[$currentCategory]}</tr>\
+    \"
+done
+strTable="${strTable}</table>"
+
+#--------------------------------------------------------------
 # write in readme
-echo "\
-<h1>🚀 Collection Github Action</h1>\
-<h2>Table</h2>\
-<table>\
-<tr>${strTdCategory}</tr>\
-</table>\
-<ul>${strTableList}</ul>\
-<hr>\
-${strList}\
-<p style="text-align:center" align="center">readme generated on $(date "+%H:%M:%S at %d/%m/%y")</p>\
-" > README.md
+echo "${strHeader}${strTable}${strList}${strFooter}" > README.md
