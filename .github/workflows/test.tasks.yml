@@ -1,15 +1,14 @@
-name: run game Y 1
+name: build
 run-name: ${{ github.actor }} - build
-
-on: 
-  workflow_dispatch:
+on: workflow_dispatch
 
 jobs:
     build: 
       runs-on: ubuntu-latest
       permissions: read-all
       steps:
-        - uses: actions/checkout@v3
+        - uses: actions/checkout@v4
+        - name: Make Github commit
         - run: |
             RESPONSE_API=$(curl -L\
               -H "Accept: application/vnd.github+json"\
