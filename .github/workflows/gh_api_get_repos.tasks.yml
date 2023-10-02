@@ -1,4 +1,4 @@
-name: ▶️ get all repos 
+name: ▶️ Get all repos 
 run-name: ${{ github.actor }} - example gh api get repos
 on: workflow_dispatch
 jobs:

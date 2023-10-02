@@ -1,4 +1,4 @@
-name: ▶️ get all profil 
+name: ▶️ Get all profil 
 run-name: ${{ github.actor }} - example gh api get profil
 on: workflow_dispatch
 jobs:

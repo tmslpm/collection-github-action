@@ -1,4 +1,4 @@
-name: 😻 hello world - nodejs
+name: 😻 Hello World - nodeJs
 run-name: ${{ github.actor }} - print Hello World !
 on: workflow_dispatch
 jobs:
