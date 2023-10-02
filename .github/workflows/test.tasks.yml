@@ -10,11 +10,7 @@ jobs:
       steps:
         - uses: actions/checkout@v4
         - run: | 
-            gh api \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \ 
-            -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}'\
-            /users/tmslpm/gists 
+            gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" /users/tmslpm/gists
             echo success
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
