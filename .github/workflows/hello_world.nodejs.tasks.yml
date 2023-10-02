@@ -11,4 +11,4 @@ jobs:
           cache: "npm"
       - name: "use node for execute script file or inline code"
         run: |
-          node console.log('hello world')
+          node -e console.log('hello world')

@@ -1,6 +1,6 @@
-name: 📦 push to main
+name: ▶️ push to main
 run-name: ${{ github.actor }} - execute add ., commit and push to main branch
-
+on: workflow_dispatch
 on:
   workflow_call:
 
@@ -11,10 +11,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Make Github commit
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add .
-          git commit -m "action commit and push (github-actions)" 
+          git config --local user.email "gh-actions@users.noreply.github.com" && git config --local user.name "gh-actions-bot"
+          git add . && git commit -m "commit by gh actions"
       - name: Make Github push
         uses: ad-m/github-push-action@master
         with:

@@ -6,7 +6,8 @@ jobs:
   # use the gh api to get profil and store the response in a json file
   main:
     runs-on: ubuntu-latest
-    steps: 
+    steps:
+      - uses: actions/checkout@v3
       - run: |
           RESPONSE_API=$(curl -L\
             -H "Accept: application/vnd.github+json"\
@@ -14,8 +15,12 @@ jobs:
             -H "X-GitHub-Api-Version: 2022-11-28"\
             https://api.github.com/users/tmslpm/repos) 
           echo $RESPONSE_API > get_repos.last.json
-          
-  # - - - - - - - - - - - - - - - - - - - - - -
-  # Call .github/workflows/call.push.tasks.yml
-  call-push:
-    uses: tmslpm/My-Collection-Github-Action/.github/workflows/call.push.tasks.yml@main
+      - name: Make Github commit
+        run: |
+          git config --local user.email "gh-actions@users.noreply.github.com" && git config --local user.name "gh-actions-bot"
+          git add . && git commit -m "commit by gh actions"
+      - name: Make Github push
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
