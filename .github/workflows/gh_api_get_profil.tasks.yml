@@ -1,5 +1,6 @@
 name: ▶️ Get all profil 
 run-name: ${{ github.actor }} - example gh api get profil
+description: soon
 on: workflow_dispatch
 jobs:
   # - - - - - - - - - - - - - - - - - - - - - -
