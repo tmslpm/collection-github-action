@@ -1,4 +1,4 @@
-name: ▶️ push to main
+name: ▶️ move file to other directory
 run-name: ${{ github.actor }} - execute add ., commit and push to main branch
 on: workflow_dispatch
 jobs:
