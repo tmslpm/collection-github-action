@@ -16,7 +16,6 @@ jobs:
           echo $RESPONSE_API
           echo $RESPONSE_API > gist_data.last.json
           
-  # - - - - - - - - - - - - - - - - - - - - - -
-  # Call .github/workflows/call.push.tasks.yml
-  call-push:
-    uses: tmslpm/My-Collection-Github-Action/.github/workflows/call.push.tasks.yml@main
+      # - - - - - - - - - - - - - - - - - - - - - -
+      # Call .github/workflows/call.push.tasks.yml
+      - uses: tmslpm/My-Collection-Github-Action/.github/workflows/call.push.tasks.yml@main
