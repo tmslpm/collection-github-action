@@ -22,7 +22,7 @@ jobs:
           # append all action title + link in readme 
           strList=""
           for f in $RESULT; do 
-            title=$(cat "${ENTRY_PATH}/${f}" | grep "^name:" | tr "name:" "")
+            title=$(cat "${ENTRY_PATH}/${f}" | grep "^name:" | tr "name:" "•")
             strList="${strList}<br><h4>${title}</h4><p>🔗 <a href='${URL}${f}' title='open the action'>${f}</a> (<a href='${RAW_URL}${f}' title='open the action'>raw</a>)</p>"
           done
 
