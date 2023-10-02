@@ -20,5 +20,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: main
-   call-wf1:
-    uses: ./.github/workflows/wf1.yml
