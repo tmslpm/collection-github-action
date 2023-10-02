@@ -16,14 +16,14 @@ jobs:
           # append all action title + link in readme https://raw.githubusercontent.com/tmslpm/My-Collection-Github-Action/main/.github/workflows/gen_readme.tasks.yml
           outListMarkdown=""
           for f in $result; do
-            outListMarkdown='${outListMarkdown}\n- File -> $f'
+            outListMarkdown="${outListMarkdown}<br> - File -> $f"
           done
 
           #--------------------------------------------------------------
           # write in readme
           cat > README.md << EOL
-          \# 🚀 Collection Github Action
-
+          <h1>🚀 Collection Github Action</h1>
+          
           ${outListMarkdown}
           EOL
           #--------------------------------------------------------------
