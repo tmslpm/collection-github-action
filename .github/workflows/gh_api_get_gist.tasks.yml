@@ -1,5 +1,6 @@
+# name: Get all gist
 # description: soon
-name: ▶️ Get all gist 
+name: ▶️ Get all gist
 run-name: ${{ github.actor }} - example gh api get gist
 on: workflow_dispatch
 jobs:

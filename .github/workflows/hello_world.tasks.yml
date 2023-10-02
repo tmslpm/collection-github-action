@@ -1,3 +1,4 @@
+# name: Hello World - shell
 # description: soon
 name: 😻 Hello World - shell
 run-name: ${{ github.actor }} - print Hello World !

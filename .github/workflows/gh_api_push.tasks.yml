@@ -1,3 +1,4 @@
+# name: Commit and push to main
 # description: soon
 name: ▶️ Commit and push to main
 run-name: ${{ github.actor }} - execute add ., commit and push to main branch
