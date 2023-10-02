@@ -3,7 +3,7 @@
 ENTRY_PATH="./.github/workflows"
 RAW_URL="https://raw.githubusercontent.com/tmslpm/Collection-Github-Action/main/.github/workflows/"
 URL="https://github.com/tmslpm/Collection-Github-Action/blob/main/.github/workflows/" 
-BACK_TO_TOP="<pre align=center>↑↑↑ <a href="#-collection-github-action" title="click to scroll up" alt="click to scroll up">BACK TO TOP</a> ↑↑↑</pre>"
+BACK_TO_TOP="<pre align=center>↑↑↑ <a href='#-collection-github-action' title='click to scroll up' alt='click to scroll up'>BACK TO TOP</a> ↑↑↑</pre>"
 
 #--------------------------------------------------------------
 # get all workflows in repos
@@ -20,7 +20,4 @@ done
 
 #--------------------------------------------------------------
 # write in readme
-cat > README.md << EOL
-<h1>🚀 Collection Github Action</h1>
-${strList}
-EOL
+echo "<h1>🚀 Collection Github Action</h1>${strList}" > README.md
