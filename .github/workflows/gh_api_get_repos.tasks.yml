@@ -1,5 +1,5 @@
 # name: Get all repos for user
-# category: example
+# category: cURL
 # description: This action uses the github api to get all repos for a user. The API request use CURL and requires a token to access the GITHUB api. The result is written to a json file. 
 name: ▶️ Get all repos 
 run-name: ${{ github.actor }} - example gh api get repos

@@ -1,0 +1,23 @@
+# name: Send a webhook message to discord
+# category: cURL
+# description: This action uses cURL to send a webhook message to a custom discord server. The result is written to a json file.
+name: ▶️ Send Webhook Message Discord
+run-name: ${{ github.actor }} - example cURL Send a webhook message to discord
+on: workflow_dispatch
+jobs:
+  # - - - - - - - - - - - - - - - - - - - - - -
+  # use the gh api to get profil and store the response in a json file
+  main:
+    runs-on: ubuntu-latest
+    steps: 
+      - run: |
+          messageToJson=$( jq -n\
+            --arg username "GithubActionTest"\
+            --arg content "Hello from Github Action Webhook message"\
+            '{username: $username, content: $content}'\
+          )
+          curl \
+            -H "Content-Type: application/json" \
+            -d "${messageToJson}" \
+            ${{ secrets.DISCORD_WEBHOOK }}
+          echo "success message send"

@@ -6,7 +6,8 @@
   "scripts": {
     "hello_world": "echo hello world",
     "pushForce": "git add . && git commit -m '...' && git push --force",
-    "push": "git add . && git commit -m '...' && git push"
+    "push": "git add . && git commit -m '...' && git push",
+    "test": "chmod +x ./docs/test.sh && ./docs/test.sh"
   },
   "author": "tmslpm",
   "license": "MIT"
