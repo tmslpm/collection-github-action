@@ -12,24 +12,8 @@ RESULT=$(ls $ENTRY_PATH)
 
 #--------------------------------------------------------------
 # first iteration for get category
-indexCategory=0
+indexCategory=0 
 strTdCategory=""
-for f in $RESULT; do
-    currentCategory=$(cat "${ENTRY_PATH}/${f}" | grep "^# category:")
-    currentCategory="${currentCategory/\# category: /''}"
-   
-    hasNotFoundCategory=true
-    for currentKey in "${!category[@]}"; do
-        if [[ "${category[$currentKey]}" == $currentCategory ]]; then
-            hasNotFoundCategory=false
-        fi
-    done
-
-    if $hasNotFoundCategory; then 
-        strTdCategory="${strTdCategory}<td>${currentCategory}</td>"
-        ((indexCategory=indexCategory+1))
-    fi
-done
  
 #--------------------------------------------------------------
 # append all action title + link in variable 
@@ -37,24 +21,34 @@ arrTableList=""
 strList=""
 for f in $RESULT; do
     # title
-    title=$(cat "${ENTRY_PATH}/${f}" | grep "^# name:")
-    title="${title/\# name:/''}"
+    title=$(cat "${ENTRY_PATH}/${f}" | grep "^# name:") && title="${title/\# name:/''}"
     # description
-    description=$(cat "${ENTRY_PATH}/${f}" | grep "# description:")
-    description="${description/\# description:/''}"
+    description=$(cat "${ENTRY_PATH}/${f}" | grep "# description:") && description="${description/\# description:/''}"
     # category
-    currentCategory=$(cat "${ENTRY_PATH}/${f}" | grep "^# category:")
-    currentCategory="${currentCategory/\# category: /''}"
-
-    # build
-
-    for currentKey in "${!category[@]}"; do
-        if [[ "${category[$currentKey]}" == $currentCategory ]]; then
-            arrTableList[$currentCategory]="${arrTableList[$currentCategory]}<li><a href='#-${title// /-}' title='go to ${title}'>${title}</a></li>"
-        fi
+    currentCategory=$(cat "${ENTRY_PATH}/${f}" | grep "^# category:") && currentCategory="${currentCategory/\# category: /''}" 
+ 
+    # check if is a new category
+    hasNotFoundCategory=true
+    for k in "${!category[@]}"; do 
+        if [[ "${category[$k]}" == $currentCategory ]]; then
+            hasNotFoundCategory=false
+            break
+        fi 
     done
 
-  
+    # if new register
+    if $hasNotFoundCategory; then
+        category[$indexCategory]="${currentCategory}"
+        strTdCategory="${strTdCategory}<td>${currentCategory}</td>" && ((indexCategory=indexCategory+1))
+    fi
+    
+    for k in "${!category[@]}"; do  
+        if [[ "${category[$k]}" == $currentCategory ]]; then
+            arrTableList[$k]="${arrTableList[$k]} <li><a href='#-${title// /-}' title='go to ${title}'>${title}</a></li>"
+            break
+        fi 
+    done 
+    
     strList="${strList}\
         <h2>🟢 ${title}</h2>\
         <p>${description}</p>\
@@ -67,16 +61,15 @@ for f in $RESULT; do
         <img src='${ACTION_URL}${f}/badge.svg' alt='badge action/${f}@main'/>\
         </p>${BACK_TO_TOP}"
 done
-
+  
 #--------------------------------------------------------------
 # header - footer
 strHeader="<h1>🚀 Collection Github Action</h1>"
 strFooter="<hr><p style="text-align:center" align="center">readme generated on $(date "+%H:%M:%S at %d/%m/%y")</p>"
 strTable="<h2>Table</h2><table><tr>${strTdCategory}</tr><tr>"
 
-for currentKey in "${!category[@]}"; do
-    currentCategory="${category[$currentKey]}"
-    strTable="${strTable}<td>${arrTableList[$currentCategory]}</td>"
+for k in "${!arrTableList[@]}"; do 
+    strTable="${strTable}<td>${arrTableList[$k]}</td>"
 done
 
 strTable="${strTable}</tr></table>"

@@ -1,7 +1,7 @@
 divider="----------------------------------------------------------------"
 entry="c"
 found=false
-category[0]="a"; category[1]="a"; category[2]="c"
+category[0]="a"; category[1]="b"; category[2]="c"
 
 #######################################
 echo $divider
@@ -30,10 +30,17 @@ echo $divider
 for currentKey in "${!category[@]}"; do
     currentCategory="${category[$currentKey]}"
     echo "Key is '$currentKey'  => Value is '${currentCategory}'"
-
+   
     if [[ "${category[$currentKey]}" == $entry ]]; then
         found=true 
     fi
+
+    category[$currentKey]="b${category[$currentKey]}"
+done
+
+for currentKey in "${!category[@]}"; do
+    currentCategory="${category[$currentKey]}"
+    echo "Key is '$currentKey'  => Value is '${currentCategory}'" 
 done
 
 #######################################
@@ -70,7 +77,8 @@ Hello # call Hello()
 
 # define function HelloWithParam($str, $str)
 HelloWithParam () {
-   echo "Called HelloWithParam() with param: $1, $2" 
+    echo "Called HelloWithParam() with param: $1, $2" 
+    return 10
 }
  
 HelloWithParam Pierre Paul # call HelloWithParam()
