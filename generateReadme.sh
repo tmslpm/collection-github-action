@@ -12,7 +12,7 @@ RESULT=$(ls $ENTRY_PATH)
  
 #--------------------------------------------------------------
 # append all action title + link in variable 
-arrTableList="" && strList="" && indexCategory=0 
+ 
 
 for f in $RESULT; do
     # title
@@ -58,16 +58,17 @@ done
   
 #--------------------------------------------------------------
 # header - footer
-strHeader="<h1>🚀 Collection Github Action</h1>"
-strFooter="<hr><p style="text-align:center" align="center">readme generated on $(date "+%H:%M:%S at %d/%m/%y")</p>"
-strTable="<h2>Table</h2><table><tr>${strTdCategory}</tr><tr>"
-
+  
 for k in "${!arrTableList[@]}"; do 
-    strTable="${strTable} <h3>${category[$k]}</h3> ${arrTableList[$k]}"
+    strTable="${strTable} <h4>✨ ${category[$k]}</h4> ${arrTableList[$k]}"
 done
-
-strTable="${strTable}</tr></table>"
 
 #--------------------------------------------------------------
 # write in readme
-echo "${strHeader}${strTable}${strList}${strFooter}" > README.md
+echo "\
+<h1>🚀 Collection Github Action</h1>\
+<h2>Table</h2>\
+${strTable}\
+${strList}\
+<hr><p style="text-align:center" align="center">readme generated on $(date "+%H:%M:%S at %d/%m/%y")</p>\
+" > README.md
