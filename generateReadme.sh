@@ -64,6 +64,7 @@ for k in "${!arrTableList[@]}"; do
 done
  
 echo "\
+<p style="text-align:center" align="center">readme generated on $(date "+%H:%M:%S at %d/%m/%y")</p><hr>\
 <h1>🚀 Collection Github Action</h1>\
 <h2>Table</h2>\
 ${strTable}\
