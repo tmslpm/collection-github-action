@@ -1,6 +1,6 @@
 # name: Send a webhook message to discord
 # category: cURL
-# description: This action uses cURL to send a webhook message to a custom discord server. The result is written to a json file.
+# description: This action uses cURL to send a webhook message to discord server.
 name: ▶️ Send Webhook Message Discord
 run-name: ${{ github.actor }} - example cURL Send a webhook message to discord
 on: workflow_dispatch
