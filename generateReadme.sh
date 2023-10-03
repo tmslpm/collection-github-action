@@ -38,6 +38,7 @@ for f in $RESULT; do
     for k in "${!category[@]}"; do  
         if [[ "${category[$k]}" == $currentCategory ]]; then
             arrTableList[$k]="${arrTableList[$k]} <li><a href='#-${title// /-}' title='go to ${title}'>${title}</a></li>"
+            echo ${arrTableList[$k]}
             break
         fi 
     done 
