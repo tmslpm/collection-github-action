@@ -9,16 +9,11 @@ BACK_TO_TOP="<pre align=center>↑↑↑ <a href='#-collection-github-action' ti
 #--------------------------------------------------------------
 # get all workflows in repos
 RESULT=$(ls $ENTRY_PATH)
-
-#--------------------------------------------------------------
-# first iteration for get category
-indexCategory=0 
-strTdCategory=""
  
 #--------------------------------------------------------------
 # append all action title + link in variable 
-arrTableList=""
-strList=""
+arrTableList="" && strList="" && indexCategory=0 
+
 for f in $RESULT; do
     # title
     title=$(cat "${ENTRY_PATH}/${f}" | grep "^# name:") && title="${title/\# name:/''}"
@@ -38,8 +33,7 @@ for f in $RESULT; do
 
     # if new register
     if $hasNotFoundCategory; then
-        category[$indexCategory]="${currentCategory}"
-        strTdCategory="${strTdCategory}<td>${currentCategory}</td>" && ((indexCategory=indexCategory+1))
+        category[$indexCategory]="${currentCategory}" && ((indexCategory=indexCategory+1))
     fi
     
     for k in "${!category[@]}"; do  
@@ -69,7 +63,7 @@ strFooter="<hr><p style="text-align:center" align="center">readme generated on $
 strTable="<h2>Table</h2><table><tr>${strTdCategory}</tr><tr>"
 
 for k in "${!arrTableList[@]}"; do 
-    strTable="${strTable}<td>${arrTableList[$k]}</td>"
+    strTable="${strTable} ${category[$k]} ${arrTableList[$k]}"
 done
 
 strTable="${strTable}</tr></table>"
