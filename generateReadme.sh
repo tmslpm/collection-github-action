@@ -57,14 +57,12 @@ for f in $RESULT; do
 done
   
 #--------------------------------------------------------------
-# header - footer
-  
+# write in readme
+
 for k in "${!arrTableList[@]}"; do 
     strTable="${strTable} <h4>✨ ${category[$k]}</h4> ${arrTableList[$k]}"
 done
-
-#--------------------------------------------------------------
-# write in readme
+ 
 echo "\
 <h1>🚀 Collection Github Action</h1>\
 <h2>Table</h2>\

@@ -4,6 +4,7 @@
   "description": "collection github action",
   "main": "index.js",
   "scripts": {
+    "hello_world": "echo hello world",
     "pushForce": "git add . && git commit -m '...' && git push --force",
     "push": "git add . && git commit -m '...' && git push"
   },

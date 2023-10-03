@@ -1,0 +1,19 @@
+# name: Hello World - NPM
+# category: hello-world
+# description: This action is just for demonstration purposes (or a template), it shows how to execute a NPM Module/Package in Github action.
+name: 😻 Hello World - nodeJs
+run-name: ${{ github.actor }} - print Hello World !
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18.7.0"
+          cache: "npm"
+      - name: "[npm]: Install dependencies and build"
+        run: |
+          npm install
+          npm run hello_world
