@@ -1,7 +1,7 @@
 # name: Hello World - NPM
 # category: hello-world
 # description: This action is just for demonstration purposes (or a template), it shows how to execute a NPM Module/Package in Github action.
-name: 😻 Hello World - nodeJs
+name: 😻 Hello World - NPM
 run-name: ${{ github.actor }} - print Hello World !
 on: workflow_dispatch
 jobs:
