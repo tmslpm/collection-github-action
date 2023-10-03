@@ -63,7 +63,7 @@ strFooter="<hr><p style="text-align:center" align="center">readme generated on $
 strTable="<h2>Table</h2><table><tr>${strTdCategory}</tr><tr>"
 
 for k in "${!arrTableList[@]}"; do 
-    strTable="${strTable} ${category[$k]} ${arrTableList[$k]}"
+    strTable="${strTable} <h3>${category[$k]}</h3> ${arrTableList[$k]}"
 done
 
 strTable="${strTable}</tr></table>"
