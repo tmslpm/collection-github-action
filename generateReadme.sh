@@ -12,8 +12,7 @@ RESULT=$(ls $ENTRY_PATH)
  
 #--------------------------------------------------------------
 # append all action title + link in variable 
- 
-
+arrTableList="" && strList="" && indexCategory=0 
 for f in $RESULT; do
     # title
     title=$(cat "${ENTRY_PATH}/${f}" | grep "^# name:") && title="${title/\# name:/''}"
