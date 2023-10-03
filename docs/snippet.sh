@@ -8,6 +8,18 @@ category[0]="a"; category[1]="b"; category[2]="c"
 echo $divider
 ##############################################################################
 
+formatToJson=$( jq -n\
+    --arg username "GithubActionTest"\
+    --arg content "Hello from Github Action Webhook message"\
+    '{username: $username, content: $content}'\
+)
+echo $formatToJson
+
+##############################################################################
+##############################################################################
+echo $divider
+##############################################################################
+
 # increment
 test=0 && echo $test
 ((test=test+1)) 
