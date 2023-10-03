@@ -7,7 +7,8 @@
     "hello_world": "echo hello world",
     "pushForce": "git add . && git commit -m '...' && git push --force",
     "push": "git add . && git commit -m '...' && git push",
-    "test": "chmod +x ./docs/test.sh && ./docs/test.sh"
+    "test": "chmod +x ./docs/test.sh && ./docs/test.sh",
+    "snip": "chmod +x ./docs/snippets/sh/variable.sh && ./docs/snippets/sh/variable.sh"
   },
   "author": "tmslpm",
   "license": "MIT"

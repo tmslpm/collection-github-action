@@ -5,6 +5,12 @@
 myString="my awesome string"
 echo $myString
 
+myUpperCaseString=$(echo "MY AWESOME STRING" | tr '[:upper:]' '[:lower:]')
+echo "toLowerCase ${myUpperCaseString}"
+
+myLowerCaseString=$(echo "my awesome string" | tr '[:lower:]' '[:upper:]')
+echo "toUpperCase ${myLowerCaseString}"
+
 #######################################
 #######################################
 # number
