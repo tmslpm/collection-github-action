@@ -8,9 +8,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: "18.7.0"
+          node-version: "18.19.0"
       - name: "use node for execute script file or inline code"
         run: |
           node -e "console.log('hello world')"
+      - name: "multiple line"
+        run: |
+          node - << 'EOF'
+          console.log("hello wolrd! 0");
+          console.log("hello wolrd! 1");
+          console.log("hello wolrd! 2");
+          EOF

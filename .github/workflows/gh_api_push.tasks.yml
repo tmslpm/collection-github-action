@@ -8,7 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Make Github commit
         run: |
           echo "test $(date "\`+%H:%M:%S\` at \`%d/%m/%y\`")" > ./result/test.txt
